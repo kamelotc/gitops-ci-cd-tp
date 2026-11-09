@@ -11,31 +11,31 @@ jobs:
     runs-on: ubuntu-latest
     # TODO TP 1 : tester sous Node 22 et sous Node 24 avec une matrice :
     strategy:
-         matrix:
-           node: [24, 26]
+      matrix:
+        node: [24, 26]
 
     steps:
-        - uses: actions/checkout@v7
-        - uses: actions/setup-node@v7
-          with:
-            node-version: ${{ matrix.node }}
-        - run: npm ci
-        # TODO TP 2 : npm run test:coverage, pour que le pipeline échoue sous les seuils de couverture
-        - run: npm test
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: ${{ matrix.node }}
+      - run: npm ci
+      # TODO TP 2 : npm run test:coverage, pour que le pipeline échoue sous les seuils de couverture
+      - run: npm test
 
   # TODO TP 1 : un job « lint » qui lance npm run lint (copiez le job test et changez la dernière ligne)
   lint:
-      runs-on: ubuntu-latest
-      strategy:
-        matrix:
-          node: [ 24, 26 ]
-      steps:
-        - uses: actions/checkout@v7
-        - uses: actions/setup-node@v7
-          with:
-            node-version: ${{ matrix.node }}
-        - run: npm ci
-        - run: npm run lint
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [24, 26]
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: ${{ matrix.node }}
+      - run: npm ci
+      - run: npm run lint
 
   build:
     needs: [lint, test]

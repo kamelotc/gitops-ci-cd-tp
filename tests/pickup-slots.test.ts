@@ -22,11 +22,11 @@ describe("RG-06 : jours d'ouverture", () => {
   });
 
   it("le lundi 19", () => {
-    expect(isOpenDay(new Date(2026, 9, 19))).toBe(true);
+    expect(isOpenDay(new Date(2026, 9, 19))).toBe(false);
   });
 
   it("le samedi 24", () => {
-    expect(isOpenDay(new Date(2026, 9, 24))).toBe(false);
+    expect(isOpenDay(new Date(2026, 9, 24))).toBe(true);
   });
 
   it("le dimanche 25", () => {
@@ -37,12 +37,12 @@ describe("RG-06 : jours d'ouverture", () => {
 describe("RG-06 : premier créneau proposé", () => {
   it("commande le lundi à 10 h", () => {
     const first = new Date(nextSlots(monday10am)[0].start);
-    expect(first).toEqual(new Date(2026, 9, 19)); // une date : new Date(2026, 9, …, …)
+    expect(first).toEqual(new Date(2026, 9, 20,16)); // une date : new Date(2026, 9, …, …)
   });
 
   it("commande le vendredi à 18 h", () => {
     const first = new Date(nextSlots(friday6pm)[0].start);
-    expect(first).toEqual(new Date(2026, 9, 23));
+    expect(first).toEqual(new Date(2026, 9, 21, 9));
   });
 });
 

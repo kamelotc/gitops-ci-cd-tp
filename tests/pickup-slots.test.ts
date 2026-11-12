@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { isOpenDay, isValidSlot, nextSlots } from "../src/domain/pickup-slots.ts";
+import { isValidSlot, nextSlots } from "../src/domain/pickup-slots.ts";
 
 // RG-06 : retrait du mardi au samedi, à 9 h ou à 16 h, au plus tôt 24 h après la commande.
 // Les dates s'écrivent new Date(année, mois - 1, jour, heure) : new Date(2026, 9, 20, 16) est le mardi 20 octobre à 16 h.
